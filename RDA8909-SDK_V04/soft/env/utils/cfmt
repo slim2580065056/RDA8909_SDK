@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ `uname` = "Linux" ]; then
+    CLANG_FORMAT=$(dirname $BASH_SOURCE[0])/../linux/clang-format
+else
+    CLANG_FORMAT=$(dirname $BASH_SOURCE[0])/../win32/clang-format.exe
+fi
+
+$CLANG_FORMAT -i -style="{ BasedOnStyle: LLVM, UseTab: Never, IndentWidth: 4, TabWidth: 4, BreakBeforeBraces: Allman, AllowShortIfStatementsOnASingleLine: false, IndentCaseLabels: false, ColumnLimit: 0 }" -fallback-style=LLVM -sort-includes=0 $@

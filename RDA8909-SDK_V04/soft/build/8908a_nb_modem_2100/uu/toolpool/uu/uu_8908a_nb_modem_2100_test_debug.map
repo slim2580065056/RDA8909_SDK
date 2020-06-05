@@ -1,0 +1,876 @@
+
+Discarded input sections
+
+ .text          0x0000000000000000        0x0 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/app.o
+ .data          0x0000000000000000        0x0 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/app.o
+ .bss           0x0000000000000000        0x0 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/app.o
+ .MIPS.abiflags
+                0x0000000000000000       0x18 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/app.o
+ .pdr           0x0000000000000000       0x60 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/app.o
+ .text.delay    0x0000000000000000        0x4 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/app.o
+ .text          0x0000000000000000        0x0 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/device_uart.o
+ .data          0x0000000000000000        0x0 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/device_uart.o
+ .bss           0x0000000000000000        0x0 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/device_uart.o
+ .reginfo       0x0000000000000000       0x18 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/device_uart.o
+ .MIPS.abiflags
+                0x0000000000000000       0x18 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/device_uart.o
+ .pdr           0x0000000000000000      0x1a0 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/device_uart.o
+ .text.uart_register_rx_cb
+                0x0000000000000000        0x4 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/device_uart.o
+ .text          0x0000000000000000        0x0 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/unit.o
+ .data          0x0000000000000000        0x0 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/unit.o
+ .bss           0x0000000000000000        0x0 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/unit.o
+ .reginfo       0x0000000000000000       0x18 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/unit.o
+ .MIPS.abiflags
+                0x0000000000000000       0x18 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/unit.o
+ .pdr           0x0000000000000000       0x60 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/unit.o
+ .text          0x0000000000000000        0x0 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .data          0x0000000000000000        0x0 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .bss           0x0000000000000000        0x0 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .reginfo       0x0000000000000000       0x18 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .MIPS.abiflags
+                0x0000000000000000       0x18 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .pdr           0x0000000000000000     0x2400 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.COS_DTrace
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.COS_DTraceX
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.COS_TraceX
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.COS_Vprintf
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.COS_GetCurrentTaskHandle
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.COS_SendEvent
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.COS_WaitEvent
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.COS_TaskCallback
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.COS_TaskCallbackNotif
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.COS_StopTaskCallback
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.COS_StartCallbackTimer
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.COS_StartCallbackFlagTimer
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.COS_StopCallbackTimer
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.COS_StartFunctionTimer
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.COS_StopFunctionTimer
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.COS_SetTimerEX
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.COS_KillTimerEX
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.COS_QueryTimerEX
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.COS_Sleep
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.COS_Realloc
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.sprintf
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.snprintf
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.sscanf
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.vsprintf
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.vsscanf
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.atoi  0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.atox  0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.atof  0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.strtol
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.strtoul
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.strtod
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.strtof
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.rand  0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.srand
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.qsort
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.bsearch
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.strsep
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.strtok
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.strtok_r
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.strcpy
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.strncpy
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.strcat
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.strncat
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.strcmp
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.strncmp
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.strnicmp
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.strchr
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.strrchr
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.strstr
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.strlen
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.strnlen
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.memmove
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.memscan
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.memcmp
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.memchr
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.strcspn
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.strspn
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.lwip_htons
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.lwip_htonl
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.ipaddr_addr
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.ip4addr_aton
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.ip4addr_ntoa
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.ip4addr_ntoa_r
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.ip6addr_aton
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.ip6addr_ntoa
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.ip6addr_ntoa_r
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.CFW_TcpipInetAddr
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.CFW_TcpipAvailableBuffer
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.CFW_TcpipGetLastError
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.CFW_TcpipSocket
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.CFW_TcpipSocketEX
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.CFW_TcpipSocketSetParam
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.CFW_TcpipSocketConnect
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.CFW_TcpipSocketSend
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.CFW_TcpipSocketRecv
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.CFW_TcpipSocketClose
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.CFW_TcpipSocketShutdownOutput
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.CFW_TcpipSocketSendto
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.CFW_TcpipSocketRecvfrom
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.CFW_TcpipSocketBind
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.CFW_TcpipSocketListen
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.CFW_TcpipSocketAccept
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.CFW_TcpipSocketGetsockname
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.CFW_TcpipSocketGetpeername
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.CFW_Gethostbyname
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.CFW_GethostbynameEX
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.CFW_GetallhostbynameEX
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.CFW_TcpipSocketConnectEx
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.CFW_TcpipSocketGetsockopt
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.CFW_TcpipSocketSetsockopt
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.CFW_TcpipGetRecvAvailable
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.CFW_TcpipSocketGetAckedSize
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.CFW_TcpipSocketGetSentSize
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.CFW_TcpipSocketGetStatus
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.vfs_umount
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.vfs_creat
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.vfs_open
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.vfs_close
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.vfs_read
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.vfs_write
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.vfs_lseek
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.vfs_fstat
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.vfs_stat
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.vfs_truncate
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.vfs_ftruncate
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.vfs_link
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.vfs_unlink
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.vfs_rename
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.vfs_fsync
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.vfs_fnctl
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.vfs_ioctl
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.vfs_opendir
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.vfs_readdir
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.vfs_readdir_r
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.vfs_telldir
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.vfs_seekdir
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.vfs_rewinddir
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.vfs_closedir
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.vfs_mkdir
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.vfs_rmdir
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.vfs_chdir
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.vfs_getcwd
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.vfs_realpath
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.vfs_statvfs
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.vfs_fstatvfs
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.vfs_sfile_init
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.vfs_sfile_read
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.vfs_sfile_write
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.vfs_sfile_size
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.vfs_resolve_path
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.vfs_file_read
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.vfs_file_write
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.vfs_file_size
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.TM_SystemTimeToFileTime
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.TM_FileTimeToSystemTime
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.TM_FormatSystemTime
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.TM_FormatFileTime
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.TM_FormatDateTime
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.TM_GetTime
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.TM_GetSystemTime
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.TM_GetSystemFileTime
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.TM_SetLocalTime
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.TM_GetTimeFormat
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.TM_SetTimeFormat
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.TM_GetTimeZone
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.TM_SetTimeZone
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.csw_TMGetTick
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.DRV_CBufInit
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.DRV_CBufFlush
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.DRV_CBufIsEmpty
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.DRV_CBufIsFull
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.DRV_CBufPayloadSize
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.DRV_CBufRemainSize
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.DRV_CBufWrite
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.DRV_CBufRead
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.DRV_CBufLinearRead
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.DRV_CBufSkipBytes
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.DRV_GpioSetDirection
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.DRV_GpioGetDirection
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.DRV_GpioSetLevel
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.DRV_GpioGetLevel
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.DRV_GpioSetEdgeIndication
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.DRV_SetPwl0
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.DRV_SetPwl1
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.DRV_SetKeyBacklight
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.DRV_UartState
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.DRV_SPIInit
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.DRV_SPIExit
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.DRV_SPIWrite
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.DRV_SPIRead
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.DRV_Spi_TxFinished
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_GpioOpen
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_GpioClose
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_GpioSetOut
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_GpioSetIn
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_GpioGet
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_GpioSet
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_GpioClr
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_GpioResetIrq
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_GpioIrqSetHandler
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_GpioIrqSetMask
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_GpioGetCfg
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_GpioGetIntStatus
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_I2cOpen
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_I2cClose
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_I2cSendByte
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_I2cGetByte
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_I2cSendData
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_I2cGetData
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_I2cSendRawByte
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_I2cReadRawByte
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_SpiOpen
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_SpiActivateCs
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_SpiDeActivateCs
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_SpiRxIfcChannelRelease
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_SpiTxIfcChannelRelease
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_SpiClose
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_SpiSendData
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_SpiTxFifoAvail
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_SpiTxDmaDone
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_SpiTxFinished
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_SpiGetData
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_SpiRxFifoLevel
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_SpiRxDmaDone
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_SpiStartInfiniteWriteMode
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_SpiStopInfiniteWriteMode
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_SpiFlushFifos
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_SpiClearRxDmaDone
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_SpiClearTxDmaDone
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_SpiGetRxIfcTc
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_SpiForcePin
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_UartBreakIntWakeup
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_UartIrqEnableBreakInt
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_UartOpen
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_UartClose
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_UartAllowSleep
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_UartSendData
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_UartTxDmaDone
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_UartTxFinished
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_UartGetData
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_UartRxFifoLevel
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_UartRxDmaDone
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_UartRxDmaStop
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_UartRxDmaLevel
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_UartRxDmaFifoEmpty
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_UartRxDmaPurgeFifo
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_UartSetRi
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_UartSetDsr
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_UartSetDcd
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_UartGetDtr
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_UartSetBreak
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_UartTxFifoAvailable
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_UartGetErrorStatus
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_UartClearErrorStatus
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_UartFifoFlush
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_UartSetRts
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_UartGetCts
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_UartIrqSetHandler
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_UartIrqSetMask
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_UartIrqGetMask
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_UartForcePinsLow
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_UartEnable
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_UartDisable
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_GpadcReadEfuse
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_GpadcEnableChannel
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_GpadcDisenableChannel
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_GpadcSetMinAtp
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_GpadcGetRawValue
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_GpadcGetMVol
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_BuzzStart
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_BuzzStop
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_PwlGlow
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_PwlSelLevel
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_LpgStart
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_LpgStop
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_PwlGlowingOutputDisable
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_PwlOutputDisable
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_PwmSetPinMux
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.hal_TimGetUpTime
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.ext_device_getGMI
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.ext_device_getGMM
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.ext_device_getGMR
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.ext_device_getIMEI
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.ext_device_getIMSI
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.ext_device_getICCID
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.ext_device_poweroff
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.ext_device_reboot
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.ext_sys_getRSSI
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.ext_sys_getState
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.ext_sys_getActState
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+ .sdkstub.ext_sys_getOper
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+flash            0xffffffff88340000 0x0000000000040000 xr
+ram              0xffffffff823f0000 0x0000000000010000 xrw
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/app.o
+LOAD D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/device_uart.o
+LOAD D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/unit.o
+LOAD D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+                0xffffffff88340000                . = ORIGIN (flash)
+                0xffffffff88340000                __flash_start = .
+
+.appheader      0xffffffff88340000       0x80
+                0xffffffff88340000        0x4 LONG 0x41505031
+                0xffffffff88340004        0x4 LONG 0xffffffff883400b1 app_enter
+                0xffffffff88340008        0x4 LONG 0xffffffff88340101 app_exit
+                0xffffffff8834000c        0x4 LONG 0x0
+                0xffffffff88340010        0x4 LONG 0x2
+                0xffffffff88340014        0x4 LONG 0x768 (__sdkstub_load_start - __flash_start)
+                0xffffffff88340018        0x4 LONG 0x110 (__sdkstub_end - __sdkstub_start)
+                0xffffffff8834001c        0x4 LONG 0xffffffff823f0000 __sdkstub_start
+                0xffffffff88340020        0x4 LONG 0x1
+                0xffffffff88340024        0x4 LONG 0x878 (__data_load_start - __flash_start)
+                0xffffffff88340028        0x4 LONG 0x0 (__data_end - __data_start)
+                0xffffffff8834002c        0x4 LONG 0xffffffff823f0110 __data_start
+                0xffffffff88340030        0x4 LONG 0x1
+                0xffffffff88340034        0x4 LONG 0x878 (__ucdata_load_start - __flash_start)
+                0xffffffff88340038        0x4 LONG 0x0 (__ucdata_end - __ucdata_start)
+                0xffffffff8834003c        0x4 LONG 0xffffffffa23f0110 __ucdata_start
+                0xffffffff88340040        0x4 LONG 0x3
+                0xffffffff88340044        0x4 LONG 0x0
+                0xffffffff88340048        0x4 LONG 0x4 (__bss_end - __bss_start)
+                0xffffffff8834004c        0x4 LONG 0xffffffff823f0110 __bss_start
+                0xffffffff88340050        0x4 LONG 0x3
+                0xffffffff88340054        0x4 LONG 0x0
+                0xffffffff88340058        0x4 LONG 0x0 (__ucbss_end - __ucbss_start)
+                0xffffffff8834005c        0x4 LONG 0xffffffffa23f0120 __ucbss_start
+                0xffffffff88340060        0x4 LONG 0x0
+                0xffffffff88340064        0x4 LONG 0x0
+                0xffffffff88340068        0x4 LONG 0x0
+                0xffffffff8834006c        0x4 LONG 0x0
+                0xffffffff88340070        0x4 LONG 0x0
+                0xffffffff88340074        0x4 LONG 0x0
+                0xffffffff88340078        0x4 LONG 0x0
+                0xffffffff8834007c        0x4 LONG 0x0
+
+.text           0xffffffff88340080      0x6e8
+                0xffffffff88340080                __text_start = .
+ *(.text .text.* .gnu.linkonce.t.* .rdata .rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata.app_enter.str1.4
+                0xffffffff88340080       0x2d D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/app.o
+ *fill*         0xffffffff883400ad        0x3 
+ .text.app_enter
+                0xffffffff883400b0       0x3c D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/app.o
+                0xffffffff883400b1                app_enter
+ .rodata.app_exit.str1.4
+                0xffffffff883400ec       0x12 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/app.o
+ *fill*         0xffffffff883400fe        0x2 
+ .text.app_exit
+                0xffffffff88340100       0x20 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/app.o
+                0xffffffff88340101                app_exit
+ .text.UartIsBaudSupported
+                0xffffffff88340120       0x24 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/device_uart.o
+ .rodata.UartCallback.str1.4
+                0xffffffff88340144       0x1e D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/device_uart.o
+ *fill*         0xffffffff88340162        0x2 
+ .text.UartCallback
+                0xffffffff88340164       0x1c D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/device_uart.o
+ .rodata.UartClose.str1.4
+                0xffffffff88340180        0xd D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/device_uart.o
+ *fill*         0xffffffff8834018d        0x3 
+ .text.UartClose
+                0xffffffff88340190       0x2c D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/device_uart.o
+ .rodata.UartSetFormat.str1.4
+                0xffffffff883401bc       0x1d D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/device_uart.o
+ *fill*         0xffffffff883401d9        0x3 
+ .text.UartSetFormat
+                0xffffffff883401dc       0x5c D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/device_uart.o
+ .rodata.UartSetFlowCtrl.str1.4
+                0xffffffff88340238       0x1b D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/device_uart.o
+ *fill*         0xffffffff88340253        0x1 
+ .text.UartSetFlowCtrl
+                0xffffffff88340254       0x74 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/device_uart.o
+ .rodata.UartOpen.str1.4
+                0xffffffff883402c8        0xc D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/device_uart.o
+ .text.UartOpen
+                0xffffffff883402d4       0x2c D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/device_uart.o
+ .rodata.UartWakeup.str1.4
+                0xffffffff88340300        0xe D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/device_uart.o
+ *fill*         0xffffffff8834030e        0x2 
+ .text.UartWakeup
+                0xffffffff88340310       0x30 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/device_uart.o
+ .rodata.UartSleep.str1.4
+                0xffffffff88340340        0xd D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/device_uart.o
+ *fill*         0xffffffff8834034d        0x3 
+ .text.UartSleep
+                0xffffffff88340350       0x38 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/device_uart.o
+ .rodata.UartRead.str1.4
+                0xffffffff88340388       0x2f D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/device_uart.o
+ *fill*         0xffffffff883403b7        0x1 
+ .text.UartRead
+                0xffffffff883403b8       0x50 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/device_uart.o
+ .rodata.UartWrite.str1.4
+                0xffffffff88340408       0x7e D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/device_uart.o
+ *fill*         0xffffffff88340486        0x2 
+ .text.UartWrite
+                0xffffffff88340488       0x98 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/device_uart.o
+ .rodata.UartDestroy.str1.4
+                0xffffffff88340520        0xf D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/device_uart.o
+ *fill*         0xffffffff8834052f        0x1 
+ .text.UartDestroy
+                0xffffffff88340530       0x30 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/device_uart.o
+ .rodata.UartCreate.str1.4
+                0xffffffff88340560       0x18 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/device_uart.o
+                                         0x17 (size before relaxing)
+ .text.UartCreate
+                0xffffffff88340578      0x140 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/device_uart.o
+                0xffffffff88340579                UartCreate
+ .rodata.list.3750
+                0xffffffff883406b8       0x3c D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/device_uart.o
+ .text.print_log_init
+                0xffffffff883406f4       0x30 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/unit.o
+                0xffffffff883406f5                print_log_init
+ .text.print_log_close
+                0xffffffff88340724       0x14 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/unit.o
+                0xffffffff88340725                print_log_close
+ .text.print_log
+                0xffffffff88340738       0x30 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/unit.o
+                0xffffffff88340739                print_log
+                0xffffffff88340768                __text_end = .
+                0xffffffff88340080                __text_load_start = LOADADDR (.text)
+                0xffffffff823f0000                . = ORIGIN (ram)
+                0xffffffff823f0000                __ram_start = .
+
+.sdkstub        0xffffffff823f0000      0x110 load address 0xffffffff88340768
+                0xffffffff823f0000                __sdkstub_start = .
+ *(.sdkstub.*)
+ .sdkstub.COS_Trace
+                0xffffffff823f0000       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+                0xffffffff823f0000                COS_Trace
+ .sdkstub.COS_Printf
+                0xffffffff823f0010       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+                0xffffffff823f0010                COS_Printf
+ .sdkstub.COS_Malloc
+                0xffffffff823f0020       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+                0xffffffff823f0020                COS_Malloc
+ .sdkstub.COS_Free
+                0xffffffff823f0030       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+                0xffffffff823f0030                COS_Free
+ .sdkstub.vsnprintf
+                0xffffffff823f0040       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+                0xffffffff823f0040                vsnprintf
+ .sdkstub.memset
+                0xffffffff823f0050       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+                0xffffffff823f0050                memset
+ .sdkstub.memcpy
+                0xffffffff823f0060       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+                0xffffffff823f0060                memcpy
+ .sdkstub.DRV_UartStructSize
+                0xffffffff823f0070       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+                0xffffffff823f0070                DRV_UartStructSize
+ .sdkstub.DRV_UartInit
+                0xffffffff823f0080       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+                0xffffffff823f0080                DRV_UartInit
+ .sdkstub.DRV_UartOpen
+                0xffffffff823f0090       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+                0xffffffff823f0090                DRV_UartOpen
+ .sdkstub.DRV_UartClose
+                0xffffffff823f00a0       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+                0xffffffff823f00a0                DRV_UartClose
+ .sdkstub.DRV_UartSleep
+                0xffffffff823f00b0       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+                0xffffffff823f00b0                DRV_UartSleep
+ .sdkstub.DRV_UartWakeup
+                0xffffffff823f00c0       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+                0xffffffff823f00c0                DRV_UartWakeup
+ .sdkstub.DRV_UartWrite
+                0xffffffff823f00d0       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+                0xffffffff823f00d0                DRV_UartWrite
+ .sdkstub.DRV_UartRead
+                0xffffffff823f00e0       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+                0xffffffff823f00e0                DRV_UartRead
+ .sdkstub.DRV_UartWaitTxFinish
+                0xffffffff823f00f0       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+                0xffffffff823f00f0                DRV_UartWaitTxFinish
+ .sdkstub.DRV_UartGetCfg
+                0xffffffff823f0100       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+                0xffffffff823f0100                DRV_UartGetCfg
+                0xffffffff823f0110                __sdkstub_end = .
+                0xffffffff88340768                __sdkstub_load_start = LOADADDR (.sdkstub)
+
+.data           0xffffffff823f0110        0x0 load address 0xffffffff88340878
+                0xffffffff823f0110                __data_start = .
+ *(.data .data.* .gnu.linkonce.d.*)
+                0xffffffff823f0110                __data_end = .
+                0xffffffff88340878                __data_load_start = LOADADDR (.data)
+                0xffffffffa23f0110                . = (. + 0x20000000)
+
+.ucdata         0xffffffffa23f0110        0x0 load address 0xffffffff88340878
+                0xffffffffa23f0110                __ucdata_start = .
+ *(.ucdata)
+                0xffffffffa23f0110                __ucdata_end = .
+                0xffffffff823f0110                . = (. - 0x20000000)
+                0xffffffff88340878                __ucdata_load_start = LOADADDR (.ucdata)
+                0xffffffff88340878                __flash_end = (LOADADDR (.ucdata) + SIZEOF (.ucdata))
+
+.bss            0xffffffff823f0110        0x4
+                0xffffffff823f0110                __bss_start = .
+ *(.bss .bss.* COMMON .scommon .sbss .sbss.* .sbss2 .sbss2.* .gnu.linkonce.b.*)
+ .bss.uart_dev  0xffffffff823f0110        0x4 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/unit.o
+                0xffffffff823f0114                __bss_end = .
+                0xffffffffa23f0114                . = (. + 0x20000000)
+
+.ucbss          0xffffffffa23f0120        0x0
+                0xffffffffa23f0120                __ucbss_start = .
+ *(.ucbss)
+                0xffffffffa23f0120                __ucbss_end = .
+                0xffffffff823f0120                . = (. - 0x20000000)
+                0xffffffff823f0120                __ram_end = .
+                0x0000000000000001                ASSERT ((__flash_end <= (ORIGIN (flash) + LENGTH (flash))), FLASH overflow)
+                0x0000000000000001                ASSERT ((__ram_end <= (ORIGIN (ram) + LENGTH (ram))), RAM overflow)
+
+/DISCARD/
+ *(.MIPS.abiflags)
+ *(.rel.dyn)
+START GROUP
+END GROUP
+LOAD c:/csdtk4/mips-rda-elf-7.1.0/bin/../lib/gcc/mips-rda-elf/7.1.0/xcpu2/mips16\libgcc.a
+OUTPUT(D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/uu_8908a_nb_modem_2100_test_debug.elf elf32-littlemips)
+
+.reginfo        0x0000000000000000       0x18
+ .reginfo       0x0000000000000000       0x18 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/app.o
+
+.mdebug.abi32   0x0000000000000000        0x0
+ .mdebug.abi32  0x0000000000000000        0x0 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/app.o
+ .mdebug.abi32  0x0000000000000000        0x0 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/device_uart.o
+ .mdebug.abi32  0x0000000000000000        0x0 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/unit.o
+
+.comment        0x0000000000000000       0x2a
+ .comment       0x0000000000000000       0x2a D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/app.o
+                                         0x2b (size before relaxing)
+ .comment       0x000000000000002a       0x2b D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/device_uart.o
+ .comment       0x000000000000002a       0x2b D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/unit.o
+
+.gnu.attributes
+                0x0000000000000000       0x10
+ .gnu.attributes
+                0x0000000000000000       0x10 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/app.o
+ .gnu.attributes
+                0x0000000000000010       0x10 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/device_uart.o
+ .gnu.attributes
+                0x0000000000000020       0x10 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/unit.o
+ .gnu.attributes
+                0x0000000000000030       0x10 D:/projects/RDA8909-SDK_V04/soft/env/lib/sdk_api_stub.o
+
+.debug_info     0x0000000000000000     0x36cd
+ .debug_info    0x0000000000000000     0x1114 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/app.o
+ .debug_info    0x0000000000001114     0x17cf D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/device_uart.o
+ .debug_info    0x00000000000028e3      0xdea D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/unit.o
+
+.debug_abbrev   0x0000000000000000      0x7ae
+ .debug_abbrev  0x0000000000000000      0x213 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/app.o
+ .debug_abbrev  0x0000000000000213      0x375 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/device_uart.o
+ .debug_abbrev  0x0000000000000588      0x226 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/unit.o
+
+.debug_loc      0x0000000000000000      0x89a
+ .debug_loc     0x0000000000000000       0x42 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/app.o
+ .debug_loc     0x0000000000000042      0x80d D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/device_uart.o
+ .debug_loc     0x000000000000084f       0x4b D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/unit.o
+
+.debug_aranges  0x0000000000000000       0xe0
+ .debug_aranges
+                0x0000000000000000       0x30 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/app.o
+ .debug_aranges
+                0x0000000000000030       0x80 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/device_uart.o
+ .debug_aranges
+                0x00000000000000b0       0x30 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/unit.o
+
+.debug_ranges   0x0000000000000000       0xf8
+ .debug_ranges  0x0000000000000000       0x20 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/app.o
+ .debug_ranges  0x0000000000000020       0xb8 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/device_uart.o
+ .debug_ranges  0x00000000000000d8       0x20 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/unit.o
+
+.debug_line     0x0000000000000000      0x8e6
+ .debug_line    0x0000000000000000      0x335 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/app.o
+ .debug_line    0x0000000000000335      0x3d0 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/device_uart.o
+ .debug_line    0x0000000000000705      0x1e1 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/unit.o
+
+.debug_str      0x0000000000000000     0x174c
+ .debug_str     0x0000000000000000     0x10f5 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/app.o
+                                       0x1389 (size before relaxing)
+ .debug_str     0x00000000000010f5      0x4f0 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/device_uart.o
+                                       0x14df (size before relaxing)
+ .debug_str     0x00000000000015e5      0x167 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/unit.o
+                                       0x1288 (size before relaxing)
+
+.debug_frame    0x0000000000000000      0x24c
+ .debug_frame   0x0000000000000000       0x58 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/app.o
+ .debug_frame   0x0000000000000058      0x190 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/device_uart.o
+ .debug_frame   0x00000000000001e8       0x64 D:/projects/RDA8909-SDK_V04/soft/build/8908a_nb_modem_2100/uu/toolpool/uu/obj/debug/unit.o

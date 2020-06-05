@@ -1,0 +1,18 @@
+#TARGET_EXPORT_FLAG += AT_HTTP_SUPPORT
+#TARGET_EXPORT_FLAG += _TCPIP_SYNC_IO_
+
+SXS_NO_STR_TO_ID := 1
+
+TARGET_EXPORT_FLAG += DISABLE_SECOND_SIM
+TARGET_EXPORT_FLAG += AT_WITHOUT_PBK
+TARGET_EXPORT_FLAG += UE_GCF_TEST
+TARGET_EXPORT_FLAG += CHIP_DIE_8909_U02
+#TARGET_EXPORT_FLAG += SMTRF_NB_CHANNEL_DBG
+
+CHIP_ROM_ELF_FILE := platform/chip/rom/${CT_ASIC}/lib/u02/mem_bridge_rom_CHIP.elf
+CHIP_ROM_DEF_FILE := platform/chip/rom/$(CT_ASIC)/lib/u02/mem_bridge_rom_CHIP.def
+BCPU_ROM_ELF_FILE := platform/chip/rom/${CT_ASIC}/lib/u02/bcpu_rom_CHIP.elf
+BCPU_ROM_DEF_FILE := platform/chip/rom/$(CT_ASIC)/lib/u02/bcpu_rom_CHIP.def
+
+include ${SOFT_WORKDIR}/target/target_common.def
+

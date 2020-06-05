@@ -1,0 +1,111 @@
+<module name="TASK">
+
+    <!-- TASK LIST FOR XCPU -->
+
+    <fn name="* TASK :  0"                        id="0x3F00" group="_TASK"/>
+    <fn name="* TASK :  1"                        id="0x3F01" group="_TASK"/>
+    <fn name="* TASK :  2"                        id="0x3F02" group="_TASK"/>
+    <fn name="* TASK :  3"                        id="0x3F03" group="_TASK"/>
+    <fn name="* TASK :  4"                        id="0x3F04" group="_TASK"/>
+    <fn name="* TASK :  5"                        id="0x3F05" group="_TASK"/>
+    <fn name="* TASK :  6"                        id="0x3F06" group="_TASK"/>
+    <fn name="* TASK :  7"                        id="0x3F07" group="_TASK"/>
+    <fn name="* TASK :  8"                        id="0x3F08" group="_TASK"/>
+    <fn name="* TASK :  9"                        id="0x3F09" group="_TASK"/>
+    <fn name="* TASK : 10"                        id="0x3F0A" group="_TASK"/>
+    <fn name="* TASK : 11"                        id="0x3F0B" group="_TASK"/>
+    <fn name="* TASK : 12"                        id="0x3F0C" group="_TASK"/>
+    <fn name="* TASK : 13"                        id="0x3F0D" group="_TASK"/>
+    <fn name="* TASK : 14"                        id="0x3F0E" group="_TASK"/>
+    <fn name="* TASK : 15"                        id="0x3F0F" group="_TASK"/>
+    <fn name="* TASK : 16"                        id="0x3F10" group="_TASK"/>
+    <fn name="* TASK : 17"                        id="0x3F11" group="_TASK"/>
+    <fn name="* TASK : 18"                        id="0x3F12" group="_TASK"/>
+    <fn name="* TASK : 19"                        id="0x3F13" group="_TASK"/>
+    <fn name="* TASK : 20"                        id="0x3F14" group="_TASK"/>
+    <fn name="* TASK : 21"                        id="0x3F15" group="_TASK"/>
+    <fn name="* TASK : 22"                        id="0x3F16" group="_TASK"/>
+    <fn name="* TASK : 23"                        id="0x3F17" group="_TASK"/>
+    <fn name="* TASK : 24"                        id="0x3F18" group="_TASK"/>
+    <fn name="* TASK : 25"                        id="0x3F19" group="_TASK"/>
+    <fn name="* TASK : 26"                        id="0x3F1A" group="_TASK"/>
+    <fn name="* TASK : 27"                        id="0x3F1B" group="_TASK"/>
+    <fn name="* TASK : 28"                        id="0x3F1C" group="_TASK"/>
+    <fn name="* TASK : 29"                        id="0x3F1D" group="_TASK"/>
+    <fn name="* TASK : 30"                        id="0x3F1E" group="_TASK"/>
+    <fn name="* TASK : 31"                        id="0x3F1F" group="_TASK"/>
+    <fn name="* TASK : 32"                        id="0x3F20" group="_TASK"/>
+    <fn name="* TASK : 33"                        id="0x3F21" group="_TASK"/>
+    <fn name="* TASK : 34"                        id="0x3F22" group="_TASK"/>
+    <fn name="* TASK : 35"                        id="0x3F23" group="_TASK"/>
+    <fn name="* TASK : 36"                        id="0x3F24" group="_TASK"/>
+    <fn name="* TASK : 37"                        id="0x3F25" group="_TASK"/>
+    <fn name="* TASK : 38"                        id="0x3F26" group="_TASK"/>
+    <fn name="* TASK : 39"                        id="0x3F27" group="_TASK"/>
+    <fn name="* TASK : 40"                        id="0x3F28" group="_TASK"/>
+    <fn name="* TASK : 41"                        id="0x3F29" group="_TASK"/>
+    <fn name="* TASK : 42"                        id="0x3F2A" group="_TASK"/>
+    <fn name="* TASK : 43"                        id="0x3F2B" group="_TASK"/>
+    <fn name="* TASK : 44"                        id="0x3F2C" group="_TASK"/>
+    <fn name="* TASK : 45"                        id="0x3F2D" group="_TASK"/>
+    <fn name="* TASK : 46"                        id="0x3F2E" group="_TASK"/>
+    <fn name="* TASK : 47"                        id="0x3F2F" group="_TASK"/>
+    <fn name="* TASK : 48"                        id="0x3F30" group="_TASK"/>
+    <fn name="* TASK : 49"                        id="0x3F31" group="_TASK"/>
+    <fn name="* TASK : 50"                        id="0x3F32" group="_TASK"/>
+    <fn name="* TASK : 51"                        id="0x3F33" group="_TASK"/>
+    <fn name="* TASK : 52"                        id="0x3F34" group="_TASK"/>
+    <fn name="* TASK : 53"                        id="0x3F35" group="_TASK"/>
+    <fn name="* TASK : 54"                        id="0x3F36" group="_TASK"/>
+    <fn name="* TASK : 55"                        id="0x3F37" group="_TASK"/>
+    <fn name="* TASK : 56"                        id="0x3F38" group="_TASK"/>
+    <fn name="* TASK : 57"                        id="0x3F39" group="_TASK"/>
+    <fn name="* TASK : 58"                        id="0x3F3A" group="_TASK"/>
+    <fn name="* TASK : 59"                        id="0x3F3B" group="_TASK"/>
+    <fn name="* TASK : 60"                        id="0x3F3C" group="_TASK"/>
+    <fn name="* TASK : 61"                        id="0x3F3D" group="_TASK"/>
+    <fn name="* TASK : 62"                        id="0x3F3E" group="_TASK"/>
+
+    <!-- This is for profiling when task is unknown (start or no task) -->
+    <fn name="* TASK : Unknown"                   id="0x3F3F" group="_TASK"/>
+    <fn name="* TASK : BCPU Fake"                 id="0x7F3F" group="_TASK"/>
+
+    <!-- JOB LIST FOR XCPU -->
+
+    <fn name="*** JOB : 0"                        id="0x3F80" group="_JOB"/>
+    <fn name="*** JOB : 1"                        id="0x3F81" group="_JOB"/>
+    <fn name="*** JOB : 2"                        id="0x3F82" group="_JOB"/>
+    <fn name="*** JOB : 3"                        id="0x3F83" group="_JOB"/>
+    <fn name="*** JOB : 4"                        id="0x3F84" group="_JOB"/>
+    <fn name="*** JOB : 5"                        id="0x3F85" group="_JOB"/>
+    <fn name="*** JOB : 6"                        id="0x3F86" group="_JOB"/>
+    <fn name="*** JOB : 7"                        id="0x3F87" group="_JOB"/>
+    <fn name="*** JOB : 8"                        id="0x3F88" group="_JOB"/>
+    <fn name="*** JOB : 9"                        id="0x3F89" group="_JOB"/>
+    <fn name="*** JOB : 10"                       id="0x3F8A" group="_JOB"/>
+    <fn name="*** JOB : 11"                       id="0x3F8B" group="_JOB"/>
+    <fn name="*** JOB : 12"                       id="0x3F8C" group="_JOB"/>
+    <fn name="*** JOB : 13"                       id="0x3F8D" group="_JOB"/>
+    <fn name="*** JOB : 14"                       id="0x3F8E" group="_JOB"/>
+    <fn name="*** JOB : 15"                       id="0x3F8F" group="_JOB"/>
+    <fn name="*** JOB : 16"                       id="0x3F90" group="_JOB"/>
+    <fn name="*** JOB : 17"                       id="0x3F91" group="_JOB"/>
+    <fn name="*** JOB : 18"                       id="0x3F92" group="_JOB"/>
+    <fn name="*** JOB : 19"                       id="0x3F93" group="_JOB"/>
+    <fn name="*** JOB : 20"                       id="0x3F94" group="_JOB"/>
+    <fn name="*** JOB : 21"                       id="0x3F95" group="_JOB"/>
+    <fn name="*** JOB : 22"                       id="0x3F96" group="_JOB"/>
+    <fn name="*** JOB : 23"                       id="0x3F97" group="_JOB"/>
+    <fn name="*** JOB : 24"                       id="0x3F98" group="_JOB"/>
+    <fn name="*** JOB : 25"                       id="0x3F99" group="_JOB"/>
+    <fn name="*** JOB : 26"                       id="0x3F9A" group="_JOB"/>
+    <fn name="*** JOB : 27"                       id="0x3F9B" group="_JOB"/>
+    <fn name="*** JOB : 28"                       id="0x3F9C" group="_JOB"/>
+    <fn name="*** JOB : 29"                       id="0x3F9D" group="_JOB"/>
+    <fn name="*** JOB : 30"                       id="0x3F9E" group="_JOB"/>
+
+    <!-- This is for profiling when task is unknown (start or no task) -->
+    <fn name="*** JOB : Unknown"                  id="0x3F9F" group="_JOB"/>
+
+</module>
+

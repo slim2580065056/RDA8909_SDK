@@ -1,0 +1,1075 @@
+#!/usr/bin/env python3
+
+import sys
+if sys.platform != 'linux':
+    raise Exception('This script is designed for Linux only')
+
+import os
+import io
+import re
+import regex
+import getpass
+import json
+import requests
+import argparse
+import hashlib
+import subprocess
+
+
+class TraceDB(object):
+
+    ID_VALID = 0
+    ID_CONFLICT = 1
+    ID_INVALID = 2
+    ID_TEMPORAL = 3
+
+    def __init__(self, **kwargs):
+        self.ignore_conflict = kwargs.get('ignore_conflict', False)
+        self.username = getpass.getuser()
+        self.revision_url = "http://10.102.208.102/tracedb/revision"
+        self.listall_url = "http://10.102.208.102/tracedb/listall"
+        self.submit_url = "http://10.102.208.102/tracedb/register"
+        self.db = {}
+
+    def fetch_remote_db(self):
+        r = requests.get(self.listall_url)
+
+        res = json.loads(r.text)
+        db = {}
+        count = int(res['count'])
+        if count > 0:
+            for item in res['items']:
+                id = int(item['id'])
+                s = item['str']
+                db[id] = s
+
+        print('fetch remote trace db, count=%d' % count)
+        self.db = db
+
+    def server_submit(self, lstr):
+        # register a trace string to database. return 0 on error
+        r = requests.post(self.submit_url, data={
+            'str': 'TSTR:%s' % lstr,
+            'submitter': self.username})
+
+        res = json.loads(r.text)
+        if res['result']:
+            id = int(res['id'])
+            self.db[id] = lstr
+            return id
+        raise Exception('failed to submit to server')
+
+    def load_yaml(self, fname):
+        # read trace DB yaml file (using string parsing)
+        db = {}
+        r = re.compile(r'0x([0-9a-fA-F]{8})\s*:\s*"((?:\\.|[^"\\])*)"\s*')
+        with open(fname, 'r') as fh:
+            for line in fh:
+                line = line.strip()
+                if line.startswith('---') or line == '':
+                    continue
+
+                m = r.match(line)
+                if not m:
+                    raise Exception('invalid line at {}'.format(fname))
+
+                id = int(m.group(1), 16)
+                s = m.group(2)
+                if id in db and s != db[id]:
+                    print('conflict ID 0x%08x at load' % id)
+                    if self.ignore_conflict:
+                        continue
+                    raise Exception('load {}f ailed'.format(fname))
+                db[id] = s
+
+        print('read %d trace id from %s' % (len(db), fname))
+        self.db = db
+
+    def store_yaml(self, fname):
+        with open(fname, 'w') as fh:
+            fh.write('---\n')
+            for id in sorted(self.db.keys()):
+                fh.write('0x%08x: "%s"\n' % (id, self.db[id]))
+        print('write %d trace id to %s' % (len(self.db), fname))
+
+    def merge(self, db):
+        for id, s in db.items():
+            if id in self.db and s != self.db[id]:
+                print('conflict ID 0x%08x at merge' % id)
+                if self.ignore_conflict:
+                    continue
+                raise Exception('merge failed')
+            self.db[id] = s
+
+    def idstatus(self, id, lstr):
+        if id in self.db:
+            if lstr == self.db[id]:
+                return self.ID_VALID
+            return self.ID_CONFLICT
+
+        if id >= 0xf0000000:
+            return self.ID_TEMPORAL
+
+        return self.ID_INVALID
+
+    def str2id(self, lstr):
+        for id, s in self.db.items():
+            if s == lstr:
+                return id
+
+        # generate temporal ID 0xfnnnnnnn, the last 7 hex using MD5 hash of the string
+        return int(hashlib.md5(lstr.encode('utf')).hexdigest()[0:7], 16) | 0xf0000000
+
+    def id2str(self, id):
+        return self.db[id]
+
+
+class TraceClogLine(object):
+
+    def __init__(self, **kwargs):
+        self.lspace = kwargs.get('lspace', '')
+        self.level = kwargs.get('level', '')
+        self.id = kwargs.get('id', 0)
+        self.lstr = kwargs.get('lstr', '')
+        self.rstr = kwargs.get('rstr', '')
+
+    def ids(self):
+        if self.id == 0:
+            return '0'
+        return '0x%08x' % self.id
+
+
+class TraceParser(object):
+
+    def __init__(self, **kwargs):
+        self.mig_at = kwargs.get('mig_at', False)
+        self.mig_attc = kwargs.get('mig_attc', False)
+        self.mig_hal = kwargs.get('mig_hal', False)
+        self.mig_mmi = kwargs.get('mig_mmi', False)
+        self.mig_jdd = kwargs.get('mig_jdd', False)
+        self.mig_csw = kwargs.get('mig_csw', False)
+        self.mig_mcd = kwargs.get('mig_mcd', False)
+        self.mig_cosoutput = kwargs.get('mig_cosoutput', False)
+        self.verbose = kwargs.get('verbose', False)
+        self.read_only = kwargs.get('read_only', False)
+        self.submit = kwargs.get('submit', False)
+        self.clog_par_short = 4
+        self.clog_par_max = 8
+        self.fname = ''
+        self.lineno = 0
+        self.force_db = False
+        self.tracedb = TraceDB()
+        self.dumpdb = {}
+
+    def lstr_partype(self, lstr):
+        # parse printf string, return I/D/F/S/M, extended
+        r = regex.compile(
+            r'([^%]*(%[# +\-\'0-9\.\*]*(?:hh|h|l|ll|j|z|t)?[diouxXeEfFgGaAcsp%]))+')
+        m = r.search(lstr)
+        if m is None:
+            return None, False
+
+        partype = ''
+        extended = False
+        for f in m.captures(1):
+            spec = f[-1:]
+            length = f[-3:-1]
+            if f == '%%':
+                pass
+            elif f == '%*s':
+                partype += 'M'
+                extended = True
+            elif spec == 's':
+                partype += 'S'
+                extended = True
+            elif spec in 'aAeEfFgG':
+                partype += 'F'
+                extended = True
+            elif length == 'll':
+                partype += 'D'
+                extended = True
+            else:
+                partype += 'I'
+        return partype, extended
+
+    def clog_partype(self, partype):
+        # from raw partype to COS_LOGPAR_XXX
+        par_len = len(partype)
+        if par_len == 0:
+            raise Exception('partype can not be empty at {}:{}'.format(
+                self.fname, self.lineno))
+        if par_len > self.clog_par_max:
+            raise Exception('partype too many parameters at {}:{}'.format(
+                self.fname, self.lineno))
+        if par_len <= self.clog_par_short:
+            return 'COS_LOGPAR_' + partype
+        return 'COS_LOGPAR({})'.format(', '.join(list(partype)))
+
+    def parse_legacy(self, line):
+        # find the string in line, return
+        # * leading \s*
+        # * posistion of start double qutation
+        # * position after the end double quotation
+        # * position after the end double quotation with needed ')'
+        r = re.compile(r'(\s*)[^"]+("(?:\\.|[^"\\])*")')
+        m = r.search(line)
+        if not m:
+            return None, -1, -1, -1
+
+        lspace = m.group(1)
+        dq1, dq2 = m.span(2)
+        lcount = line[:dq1].count('(')
+        rcount = line[:dq1].count(')')
+        es = dq2
+        while lcount - rcount > 1:
+            rcount += 1
+            nes = line[es:].find(')')
+            if nes < 0:
+                return lspace, dq1, dq2, -1
+            es += nes+1
+        return lspace, dq1, dq2, es
+
+    def find_legacy_tstr(self, line):
+        r = re.compile(
+            r'^\s*(?:SXS_TRACE|OSI_PRINTF|tra_RfdTrace.+|TRACE_.+|ERRC_PRINT.+|ERLC_PRINT.+|EPDC_PRINT.+|EMAC_PRINT.+|NAS_PRINT.+)\s*\(.+TSTR\s*\(\s*(?:\([^)]*\))?\s*"((?:\\.|[^"\\])*)"\s*,\s*([x0-9a-fA-F]+)')
+        m = r.search(line)
+        if m:
+            return m.group(2), m.group(1)
+        return None, None
+
+    def check_legacy_trace(self, sline):
+        if self.mig_at:
+            r = re.compile(r'^(?:ATLOG|DRVLOG|USBLOG)S?([EWIDV])\s*\(')
+            m = r.search(sline)
+            if m:
+                return m.group(0), m.group(1), True
+            r = re.compile(
+                r'^(?:ATUART|ATUAT|ATDISP|ATCMD|ATDATA|DRV|USB)LOGS?\s*\(\s*([EWIDV])')
+            m = r.search(sline)
+            if m:
+                return m.group(0), m.group(1), True
+        if self.mig_csw:
+            r = re.compile(r'^CSW_TRACE\s*\(')
+            m = r.search(sline)
+            if m:
+                return m.group(0), 'I', True
+        if self.mig_mcd:
+            r = re.compile(r'^MCD_TRACE\s*\(')
+            m = r.search(sline)
+            if m:
+                return m.group(0), 'I', True
+        if self.mig_attc:
+            r = re.compile(r'^AT_TC\s*\(')
+            m = r.search(sline)
+            if m:
+                return m.group(0), 'I', True
+        if self.mig_hal:
+            r = re.compile(r'^HAL_TRACE\s*\(')
+            m = r.search(sline)
+            if m:
+                return m.group(0), 'I', True
+        if self.mig_mmi:
+            r = re.compile(r'^(?:mmi_trace_b|mmi_trace|wap_trace_b)\s*\(')
+            m = r.search(sline)
+            if m:
+                return m.group(0), 'I', True
+        if self.mig_jdd:
+            r = re.compile(r'^JDD_LOG_(INFO|WARNING|FATAL)[0-9]\s*\(')
+            m = r.search(sline)
+            if m:
+                level = m.group(1)
+                if level == 'INFO':
+                    return m.group(0), 'I', True
+                if level == 'WARNING':
+                    return m.group(0), 'W', True
+                if level == 'FATAL':
+                    return m.group(0), 'E', True
+        if self.mig_cosoutput:
+            r = re.compile(r'^(?:COS_OUTPUT)\s*\(')
+            m = r.search(sline)
+            if m:
+                return m.group(0), 'I', True
+        return None, None, False
+
+    def clog_migrate_line(self, line):
+        sline = line.strip()
+
+        _, level, matched = self.check_legacy_trace(sline)
+        if matched:
+            if self.verbose:
+                print('{}:{} {}'.format(self.fname, self.lineno, sline))
+
+            lspace, dq1, dq2, es = self.parse_legacy(line)
+            if es < 0:
+                if self.verbose:
+                    print('=> invalid')
+                else:
+                    print('invalid {}:{} {}'.format(
+                        self.fname, self.lineno, sline))
+                return line
+
+            cl = TraceClogLine(lspace=lspace,
+                               level=level,
+                               id=0,
+                               lstr=line[dq1+1:dq2-1],
+                               rstr=line[es:])
+            nline = self.write_clog(cl)
+            if self.verbose:
+                print('   => {}'.format(nline.strip()))
+            return nline
+        return line
+
+    def process_file(self, fname, line_proc):
+        self.fname = fname
+        self.lineno = 0
+        if self.verbose:
+            print(fname)
+
+        with open(fname, 'r') as fh:
+            lines = fh.readlines()
+
+        nlines = []
+        changed = False
+        for line in lines:
+            self.lineno += 1
+            nline = line_proc(line)
+            if not self.read_only:
+                nlines.append(nline)
+                if nline != line:
+                    changed = True
+
+        if changed:
+            with open(fname, 'w') as fh:
+                fh.write(''.join(nlines))
+
+    def process_idsearch(self, fname, line_proc):
+        out = subprocess.getoutput('egrep -nHr "COS_LOG|COS_LOGX" %s' % fname)
+        buf = io.StringIO(out)
+        prev_line = ''
+        for line in buf.readlines():
+            fields = line.split(':')
+            if len(fields) > 2:
+                self.fname = fname
+                self.lineno = fields[1]
+                line_proc(':'.join(fields[2:]))
+            else:
+                print('---- bad format\n%s%s' % (prev_line, line))
+            prev_line = line
+
+        out = subprocess.getoutput('egrep -anHr "*" %s' % fname)
+        buf = io.StringIO(out)
+        prev_line = ''
+        line = buf.readline()
+        while line:     #for a new log StringContent which should contains specific substring such as TSTR
+            r = re.compile(r'^.*(TSTR\(\").*$')
+            m = r.search(line)
+            if not m:
+                line = buf.readline()
+                continue
+            firstQuotation = False
+            foundComma = False
+            format_codeline = ""
+            #print(line)
+            fields = line.split(':')
+            if len(fields) > 2:
+                while True:     #for different lines within a log StringContent
+                    self.fname = fname
+                    self.lineno = fields[1]                    
+                    codeline = ':'.join(fields[2:])
+                    str_fields = codeline.split('"')
+                    parseStatusInString = False     #a simple state machine to judge whether in a StringContent during code parsing
+                    for i in range(0,len(str_fields)):
+                        if parseStatusInString:     #in String Content
+                            if not firstQuotation:
+                                format_codeline += '"'
+                                firstQuotation = True
+                            format_codeline += str_fields[i]
+                            if format_codeline[-1] == '\\':
+                                format_codeline += '\"'     # \" in code will be kept as original
+                            else:
+                                parseStatusInString = False
+                        else:   #out of String Content
+                            if not format_codeline:
+                                format_codeline = str_fields[i]
+                            elif str_fields[i].find(',') != -1:
+                                foundComma = True
+                                #print('MyNewLine[%d]:---%s' % (i, format_codeline))
+                                break
+                            parseStatusInString = True
+                        #print('MyParseField[i]:---%s' % (str_fields[i]))
+                        #print('MyFormatLine[%d]:---%s' % (i, format_codeline))
+                    if foundComma:
+                        format_codeline += '"'
+                        format_codeline += ''.join(str_fields[i:])
+                        break
+                    else:   #try looking for comma in next line as a string-end charactor
+                        line = buf.readline()
+                        if not line:
+                            break
+                        fields = line.split(':')    #do NOT check len(fields) cuz egrep will match all lines
+                #print('MyFinalFormatLine:---%s' % (format_codeline))
+
+                line_proc(format_codeline)      
+                    #format_codeline is the formated string which will be exactly the same as outputed from the running product, 
+                    #Notice inside this function SED will replace the Trace-ID in the same line as string-end charactor located
+            else:
+                print('---- bad format\n%s%s' % (prev_line, line))
+            prev_line = line
+            line = buf.readline()
+
+
+    def clog_migrate(self, fname):
+        self.process_file(fname, self.clog_migrate_line)
+
+    def clog_parcheck(self, fname):
+        self.process_file(fname, self.clog_parcheck_line)
+
+    def clog_use_db(self, fname):
+        self.force_db = True
+        self.process_file(fname, self.clog_set_db_line)
+
+    def clog_unuse_db(self, fname):
+        self.force_db = False
+        self.process_file(fname, self.clog_set_db_line)
+
+    def id_list(self, fname):
+        self.process_idsearch(fname, self.id_list_line)
+
+    def id_fix(self, fname):
+        self.process_file(fname, self.id_fix_line)
+
+    def id_submit(self, fname):
+        self.process_file(fname, self.id_submit_line)
+
+    def id_fix_tstr(self, fname):
+        self.process_idsearch(fname, self.id_fix_tstr_line)
+
+    def id_submit_tstr(self, fname):
+        self.process_idsearch(fname, self.id_submit_tstr_line)
+
+    def id_dump_temp(self, fname):
+        self.process_idsearch(fname, self.id_dump_temp_line)
+
+    def id_dump(self, fname):
+        self.process_idsearch(fname, self.id_dump_line)
+
+    def parse_clog(self, line):
+        # parse COS_LOG/COS_LOGX
+        rb = re.compile(
+            r'(\s*)COS_LOG([EWIDV])\s*\(\s*([x0-9a-fA-F]+)\s*,\s*"((?:\\.|[^"\\])*)"')
+        rx = re.compile(
+            r'(\s*)COS_LOGX([EWIDV])\s*\((?:\([^)]+\)|[^,()])+,\s*([x0-9a-fA-F]+)\s*,\s*"((?:\\.|[^"\\])*)"')
+        m = rb.search(line)
+        if not m:
+            m = rx.search(line)
+        if not m:
+            return None
+
+        _, es = m.span(0)
+        return TraceClogLine(lspace=m.group(1), level=m.group(2), id=int(m.group(3), 0),
+                             lstr=m.group(4), rstr=line[es:])
+
+    def write_clog(self, cl):
+        partype, extended = self.lstr_partype(cl.lstr)
+        if extended:
+            return '{}COS_LOGX{}({}, {}, "{}"{}'.format(
+                cl.lspace, cl.level, self.clog_partype(partype),
+                cl.ids(), cl.lstr, cl.rstr)
+        else:
+            return '{}COS_LOG{}({}, "{}"{}'.format(
+                cl.lspace, cl.level, cl.ids(), cl.lstr, cl.rstr)
+
+    def clog_parcheck_line(self, line):
+        cl = self.parse_clog(line)
+        if not cl:
+            return line
+        return self.write_clog(cl)
+
+    def clog_set_db_line(self, line):
+        cl = self.parse_clog(line)
+        if not cl:
+            return line
+
+        if self.force_db:
+            cl.id = self.tracedb.str2id(cl.lstr)
+        else:
+            cl.id = 0
+        return self.write_clog(cl)
+
+    def id_list_line(self, line):
+        cl = self.parse_clog(line)
+        if not cl:
+            ids, lstr = self.find_legacy_tstr(line)
+            if lstr is None:
+                return line
+            id = int(ids, 0)
+        else:
+            lstr = cl.lstr
+            id = cl.id
+
+        if id == 0:
+            return line
+
+        status = self.tracedb.idstatus(id, lstr)
+        if status == TraceDB.ID_CONFLICT:
+            print('[ conflict] %s:%s 0x%08x [%s] r[%s]' % (
+                self.fname, self.lineno, id, lstr, self.tracedb.id2str(id)))
+        elif status == TraceDB.ID_VALID:
+            if self.verbose:
+                print('[      OK] %s:%s 0x%08x [%s]' % (
+                    self.fname, self.lineno, id, lstr))
+        elif status == TraceDB.ID_TEMPORAL:
+            print('[temporal] %s:%s 0x%08x [%s]' % (
+                self.fname, self.lineno, id, lstr))
+        else:
+            print('[ invalid] %s:%s 0x%08x [%s]' % (
+                self.fname, self.lineno, id, lstr))
+        return line
+
+    def id_fix_line(self, line):
+        cl = self.parse_clog(line)
+        if not cl or cl.id == 0:
+            return line
+
+        status = self.tracedb.idstatus(cl.id, cl.lstr)
+        if status == TraceDB.ID_CONFLICT or \
+                status == TraceDB.ID_INVALID or \
+                status == TraceDB.ID_TEMPORAL:
+            nid = self.tracedb.str2id(cl.lstr)
+            print('%s:%s 0x%08x -> 0x%08x [%s]' %
+                  (self.fname, self.lineno, cl.id, nid, cl.lstr))
+
+            cl.id = nid
+            return self.write_clog(cl)
+        return line
+
+    def id_submit_line(self, line):
+        cl = self.parse_clog(line)
+        if not cl or cl.id == 0:
+            return line
+
+        status = self.tracedb.idstatus(cl.id, cl.lstr)
+        if status == TraceDB.ID_TEMPORAL:
+            if not self.submit:
+                print(' ==> 0x%08x [%s] ...' % (cl.id, cl.lstr))
+            else:
+                nid = self.tracedb.server_submit(cl.lstr)
+                print(' ==> 0x%08x [%s]' % (nid, cl.lstr))
+
+                cl.id = nid
+                return self.write_clog(cl)
+        return line
+
+    def sed_replace(self, fname, lineno, text_old, text_new):
+        rep = '{}s/{}/{}/'.format(lineno, text_old, text_new)
+        subprocess.run(['sed', '-i', '-e', rep, fname])
+
+    def id_fix_tstr_line(self, line):
+        ids, lstr = self.find_legacy_tstr(line)
+        if lstr is None:
+            return line
+
+        id = int(ids, 0)
+        status = self.tracedb.idstatus(id, lstr)
+        if status == TraceDB.ID_CONFLICT or \
+                status == TraceDB.ID_INVALID or \
+                status == TraceDB.ID_TEMPORAL:
+            nid = self.tracedb.str2id(lstr)
+            print('%s:%s 0x%08x -> 0x%08x [%s]' %
+                  (self.fname, self.lineno, id, nid, lstr))
+
+            self.sed_replace(self.fname, self.lineno, ids, '0x%08x' % nid)
+        return line
+
+    def id_submit_tstr_line(self, line):
+        ids, lstr = self.find_legacy_tstr(line)
+        if lstr is None:
+            return line
+
+        id = int(ids, 0)
+        status = self.tracedb.idstatus(id, lstr)
+        if status == TraceDB.ID_TEMPORAL:
+            if not self.submit:
+                print(' ==> 0x%08x [%s]' % (id, lstr))
+            else:
+                nid = self.tracedb.server_submit(lstr)
+                print(' ==> 0x%08x [%s]' % (nid, lstr))
+
+                self.sed_replace(self.fname, self.lineno, ids, '0x%08x' % nid)
+        return line
+
+    def id_dump_temp_line(self, line):
+        cl = self.parse_clog(line)
+        if not cl:
+            ids, lstr = self.find_legacy_tstr(line)
+            if lstr is None:
+                return line
+            id = int(ids, 0)
+        else:
+            lstr = cl.lstr
+            id = cl.id
+
+        if id == 0:
+            return line
+
+        status = self.tracedb.idstatus(id, lstr)
+        if status == TraceDB.ID_TEMPORAL:
+            self.dumpdb[id] = lstr
+        return line
+
+    def id_dump_line(self, line):
+        cl = self.parse_clog(line)
+        if not cl:
+            ids, lstr = self.find_legacy_tstr(line)
+            if lstr is None:
+                return line
+            id = int(ids, 0)
+        else:
+            lstr = cl.lstr
+            id = cl.id
+
+        if id == 0:
+            return line
+
+        status = self.tracedb.idstatus(id, lstr)
+        if status == TraceDB.ID_VALID:
+            self.dumpdb[id] = lstr
+        return line
+
+
+def fnames_from_arg(args):
+    fnames = []
+    if args.files:
+        fnames.extend(args.files)
+
+    if args.filelists:
+        for fi in args.filelists:
+            with open(fi, 'r') as fh:
+                for fname in fh.readlines():
+                    fname = fname.strip()
+                    if fname == '' or fname.startswith('#'):
+                        continue
+                    fnames.append(fname)
+
+    if not fnames:
+        raise Exception('no file names are specified')
+    return fnames
+
+
+def clog_migrate_args(sub_parsers):
+    parser = sub_parsers.add_parser('clog-migrate',
+                                    help='Migrate legacy trace codes to COS_LOG/COS_LOGX')
+    parser.set_defaults(func=clog_migrate)
+    parser.add_argument('-v', '--verbose', dest='verbose', action='store_true',
+                        help='Verbose')
+    parser.add_argument('-1', '--atlog', dest='mig_at', action='store_true',
+                        help='Detect ATLOG, DRVLOG series')
+    parser.add_argument('-2', '--attc', dest='mig_attc', action='store_true',
+                        help='Detect AT_TC')
+    parser.add_argument('-3', '--hal', dest='mig_hal', action='store_true',
+                        help='Detect HAL_TRACE')
+    parser.add_argument('-4', '--mmi', dest='mig_mmi', action='store_true',
+                        help='Detect mmi_trace_b')
+    parser.add_argument('-5', '--jdd', dest='mig_jdd', action='store_true',
+                        help='Detect JDD_LOG_ series')
+    parser.add_argument('-6', '--cosoutput', dest='mig_cosoutput', action='store_true',
+                        help='Detect COS_OUTPUT')
+    parser.add_argument('-7', '--cswtc', dest='mig_csw', action='store_true',
+                        help='Detect CSW_TRACE')
+    parser.add_argument('-8', '--mcdtc', dest='mig_mcd', action='store_true',
+                        help='Detect MCD_TRACE')
+    parser.add_argument('--all', dest='migall', action='store_true',
+                        help='Detect all of the above')
+    parser.add_argument('-f', '--file', dest='files', action='append',
+                        help='File name to be processed')
+    parser.add_argument('-l', '--filelist', dest='filelists', action='append',
+                        help='File name contains file names to be processed')
+
+
+def clog_migrate(args):
+    if args.migall:
+        args.mig_at = True
+        args.mig_attc = True
+        args.mig_hal = True
+        args.mig_mmi = True
+        args.mig_jdd = True
+        args.mig_csw = True
+        args.mig_mcd = True
+        args.mig_cosoutput = True
+
+    parser = TraceParser(verbose=args.verbose,
+                         mig_at=args.mig_at,
+                         mig_attc=args.mig_attc,
+                         mig_hal=args.mig_hal,
+                         mig_mmi=args.mig_mmi,
+                         mig_jdd=args.mig_jdd,
+                         mig_csw=args.mig_csw,
+                         mig_mcd=args.mig_mcd,
+                         mig_cosoutput=args.mig_cosoutput)
+    fnames = fnames_from_arg(args)
+    for fname in fnames:
+        parser.clog_migrate(fname)
+
+
+def clog_parcheck_args(sub_parsers):
+    parser = sub_parsers.add_parser('clog-parcheck',
+                                    help='Check COS_LOG, COS_LOGX format string')
+    parser.set_defaults(func=clog_parcheck)
+    parser.add_argument('-v', '--verbose', dest='verbose', action='store_true',
+                        help='Verbose')
+    parser.add_argument('-f', '--file', dest='files', action='append',
+                        help='File name to be processed')
+    parser.add_argument('-l', '--filelist', dest='filelists', action='append',
+                        help='File name contains file names to be processed')
+
+
+def clog_parcheck(args):
+    parser = TraceParser(verbose=args.verbose)
+    fnames = fnames_from_arg(args)
+    for fname in fnames:
+        parser.clog_parcheck(fname)
+
+
+def clog_partype_list_args(sub_parsers):
+    parser = sub_parsers.add_parser('clog-partype-list',
+                                    help='List all used extended partype')
+    parser.set_defaults(func=clog_partype_list)
+    parser.add_argument('-v', '--verbose', dest='verbose', action='store_true',
+                        help='Verbose')
+    parser.add_argument('-f', '--file', dest='files', action='append',
+                        help='File name to be processed')
+    parser.add_argument('-l', '--filelist', dest='filelists', action='append',
+                        help='File name contains file names to be processed')
+
+
+def clog_partype_list(args):
+    parser = TraceParser(verbose=args.verbose, read_only=True)
+    fnames = fnames_from_arg(args)
+    partypes = []
+    for fname in fnames:
+        with open(fname, 'r') as fh:
+            for line in fh.readlines():
+                cl = parser.parse_clog(line.strip())
+                if cl is not None:
+                    partype, extended = parser.lstr_partype(cl.lstr)
+                    if extended and partype not in partypes:
+                        partypes.append(partype)
+
+    for partype in sorted(partypes):
+        print(parser.clog_partype(partype))
+
+
+def clog_use_db_args(sub_parsers):
+    parser = sub_parsers.add_parser('clog-use-db',
+                                    help='Use trace ID')
+    parser.set_defaults(func=clog_use_db)
+    parser.add_argument('-v', '--verbose', dest='verbose', action='store_true',
+                        help='Verbose')
+    parser.add_argument('-f', '--file', dest='files', action='append',
+                        help='File name to be processed')
+    parser.add_argument('-l', '--filelist', dest='filelists', action='append',
+                        help='File name contains file names to be processed')
+
+
+def clog_use_db(args):
+    parser = TraceParser(verbose=args.verbose)
+    parser.tracedb.fetch_remote_db()
+    fnames = fnames_from_arg(args)
+    for fname in fnames:
+        parser.clog_use_db(fname)
+
+
+def clog_unuse_db_args(sub_parsers):
+    parser = sub_parsers.add_parser('clog-unuse-db',
+                                    help='Unuse trace ID')
+    parser.set_defaults(func=clog_unuse_db)
+    parser.add_argument('-v', '--verbose', dest='verbose', action='store_true',
+                        help='Verbose')
+    parser.add_argument('-f', '--file', dest='files', action='append',
+                        help='File name to be processed')
+    parser.add_argument('-l', '--filelist', dest='filelists', action='append',
+                        help='File name contains file names to be processed')
+
+
+def clog_unuse_db(args):
+    parser = TraceParser(verbose=args.verbose)
+    fnames = fnames_from_arg(args)
+    for fname in fnames:
+        parser.clog_unuse_db(fname)
+
+
+def enc_check_args(sub_parsers):
+    parser = sub_parsers.add_parser('enc-check',
+                                    help='Check the files are UTF-8')
+    parser.set_defaults(func=enc_check)
+    parser.add_argument('-v', '--verbose', dest='verbose', action='store_true',
+                        help='Verbose')
+    parser.add_argument('-f', '--file', dest='files', action='append',
+                        help='File name to be processed')
+    parser.add_argument('-l', '--filelist', dest='filelists', action='append',
+                        help='File name contains file names to be processed')
+
+
+def enc_check(args):
+    fnames = fnames_from_arg(args)
+    for fname in fnames:
+        try:
+            fh = open(fname, 'r')
+            fh.readlines()
+            if args.verbose:
+                print('OK {}'.format(fname))
+            fh.close()
+        except:
+            print('FAILED {}'.format(fname))
+    return 0
+
+
+def enc_from_gbk_args(sub_parsers):
+    parser = sub_parsers.add_parser('enc-from-gbk',
+                                    help='Convert file list from GBK to UTF-8')
+    parser.set_defaults(func=enc_from_gbk)
+    parser.add_argument('-v', '--verbose', dest='verbose', action='store_true',
+                        help='Verbose')
+    parser.add_argument('-f', '--file', dest='files', action='append',
+                        help='File name to be processed')
+    parser.add_argument('-l', '--filelist', dest='filelists', action='append',
+                        help='File name contains file names to be processed')
+
+
+def enc_from_gbk(args):
+    fnames = fnames_from_arg(args)
+    for fname in fnames:
+        proc = subprocess.Popen(
+            ['iconv', '-f', 'gbk', fname], stdout=subprocess.PIPE)
+        out, _ = proc.communicate()
+        if proc.returncode != 0:
+            print('Failed to convert from GBK: {}'.format(fname))
+            continue
+
+        with open(fname, 'wb') as fh:
+            fh.write(out)
+    return 0
+
+
+def id_list_args(sub_parsers):
+    parser = sub_parsers.add_parser('id-list',
+                                    help='List used trace ID')
+    parser.set_defaults(func=id_list)
+    parser.add_argument('-v', '--verbose', dest='verbose', action='store_true',
+                        help='Verbose')
+    parser.add_argument('-f', '--file', dest='files', action='append',
+                        help='File name to be processed')
+    parser.add_argument('-l', '--filelist', dest='filelists', action='append',
+                        help='File name contains file names to be processed')
+
+
+def id_list(args):
+    fnames = fnames_from_arg(args)
+    parser = TraceParser(verbose=args.verbose, read_only=True)
+    parser.tracedb.fetch_remote_db()
+    for fname in fnames:
+        parser.id_list(fname)
+    return 0
+
+
+def id_fix_args(sub_parsers):
+    parser = sub_parsers.add_parser('id-fix',
+                                    help='Change invalid and conflict to temporal ID')
+    parser.set_defaults(func=id_fix)
+    parser.add_argument('-v', '--verbose', dest='verbose', action='store_true',
+                        help='Verbose')
+    parser.add_argument('-f', '--file', dest='files', action='append',
+                        help='File name to be processed')
+    parser.add_argument('-l', '--filelist', dest='filelists', action='append',
+                        help='File name contains file names to be processed')
+
+
+def id_fix(args):
+    fnames = fnames_from_arg(args)
+    parser = TraceParser(verbose=args.verbose)
+    parser.tracedb.fetch_remote_db()
+    for fname in fnames:
+        parser.id_fix(fname)
+    return 0
+
+
+def id_submit_args(sub_parsers):
+    parser = sub_parsers.add_parser('id-submit',
+                                    help='Submit temporal ID to server')
+    parser.set_defaults(func=id_submit)
+    parser.add_argument('-v', '--verbose', dest='verbose', action='store_true',
+                        help='Verbose')
+    parser.add_argument('-s', '--submit', dest='submit', action='store_true',
+                        help='Submit to server')
+    parser.add_argument('-f', '--file', dest='files', action='append',
+                        help='File name to be processed')
+    parser.add_argument('-l', '--filelist', dest='filelists', action='append',
+                        help='File name contains file names to be processed')
+
+
+def id_submit(args):
+    fnames = fnames_from_arg(args)
+    parser = TraceParser(verbose=args.verbose, submit=args.submit)
+    parser.tracedb.fetch_remote_db()
+    for fname in fnames:
+        parser.id_submit(fname)
+    return 0
+
+
+def id_fix_tstr_args(sub_parsers):
+    parser = sub_parsers.add_parser('id-fix-tstr',
+                                    help='Change invalid and conflict to temporal ID in TSTR')
+    parser.set_defaults(func=id_fix_tstr)
+    parser.add_argument('-v', '--verbose', dest='verbose', action='store_true',
+                        help='Verbose')
+    parser.add_argument('-f', '--file', dest='files', action='append',
+                        help='File name to be processed')
+    parser.add_argument('-l', '--filelist', dest='filelists', action='append',
+                        help='File name contains file names to be processed')
+
+
+def id_fix_tstr(args):
+    fnames = fnames_from_arg(args)
+    parser = TraceParser(verbose=args.verbose)
+    parser.tracedb.fetch_remote_db()
+    for fname in fnames:
+        parser.id_fix_tstr(fname)
+    return 0
+
+
+def id_submit_tstr_args(sub_parsers):
+    parser = sub_parsers.add_parser('id-submit-tstr',
+                                    help='Submit temporal ID in TSTR to server')
+    parser.set_defaults(func=id_submit_tstr)
+    parser.add_argument('-v', '--verbose', dest='verbose', action='store_true',
+                        help='Verbose')
+    parser.add_argument('-s', '--submit', dest='submit', action='store_true',
+                        help='Submit to server')
+    parser.add_argument('-f', '--file', dest='files', action='append',
+                        help='File name to be processed')
+    parser.add_argument('-l', '--filelist', dest='filelists', action='append',
+                        help='File name contains file names to be processed')
+
+
+def id_submit_tstr(args):
+    fnames = fnames_from_arg(args)
+    parser = TraceParser(verbose=args.verbose, submit=args.submit)
+    parser.tracedb.fetch_remote_db()
+    for fname in fnames:
+        parser.id_submit_tstr(fname)
+    return 0
+
+
+def id_dump_temp_args(sub_parsers):
+    parser = sub_parsers.add_parser('id-dump-temp',
+                                    help='Dump temporal IDs to yaml')
+    parser.set_defaults(func=id_dump_temp)
+    parser.add_argument('-v', '--verbose', dest='verbose', action='store_true',
+                        help='Verbose')
+    parser.add_argument('-f', '--file', dest='files', action='append',
+                        help='File name to be processed')
+    parser.add_argument('-l', '--filelist', dest='filelists', action='append',
+                        help='File name contains file names to be processed')
+    parser.add_argument('yaml', nargs='?', default='trace_user.yaml',
+                        help='Input & output yaml file')
+
+
+def id_dump_temp(args):
+    fnames = fnames_from_arg(args)
+    parser = TraceParser(verbose=args.verbose, read_only=True)
+    parser.tracedb.fetch_remote_db()
+    parser.dumpdb.clear()
+    for fname in fnames:
+        parser.id_dump_temp(fname)
+
+    db = TraceDB()
+    if os.path.exists(args.yaml):
+        db.load_yaml(args.yaml)
+
+    db.merge(parser.dumpdb)
+    db.store_yaml(args.yaml)
+    return 0
+
+
+def id_dump_args(sub_parsers):
+    parser = sub_parsers.add_parser('id-dump',
+                                    help='Dump valid IDs to yaml')
+    parser.set_defaults(func=id_dump)
+    parser.add_argument('-v', '--verbose', dest='verbose', action='store_true',
+                        help='Verbose')
+    parser.add_argument('-f', '--file', dest='files', action='append',
+                        help='File name to be processed')
+    parser.add_argument('-l', '--filelist', dest='filelists', action='append',
+                        help='File name contains file names to be processed')
+    parser.add_argument('yaml', nargs='?', default='traceDb.yaml',
+                        help='Input & output yaml file')
+
+
+def id_dump(args):
+    fnames = fnames_from_arg(args)
+    parser = TraceParser(verbose=args.verbose, read_only=True)
+    parser.tracedb.fetch_remote_db()
+    parser.dumpdb.clear()
+    for fname in fnames:
+        parser.id_dump(fname)
+
+    db = TraceDB()
+    if os.path.exists(args.yaml):
+        db.load_yaml(args.yaml)
+
+    db.merge(parser.dumpdb)
+    db.store_yaml(args.yaml)
+    return 0
+
+
+def id_dump_server_args(sub_parsers):
+    parser = sub_parsers.add_parser('id-dump-server',
+                                    help='Dump server database to yaml')
+    parser.set_defaults(func=id_dump_server)
+    parser.add_argument('yaml', nargs='?', default='traceDb.yaml',
+                        help='Input & output yaml file')
+
+
+def id_dump_server(args):
+    parser = TraceParser(read_only=True)
+    parser.tracedb.fetch_remote_db()
+
+    db = TraceDB()
+    if os.path.exists(args.yaml):
+        db.load_yaml(args.yaml)
+
+    db.merge(parser.tracedb.db)
+    db.store_yaml(args.yaml)
+    return 0
+
+
+def main(argv):
+    parser = argparse.ArgumentParser(usage='Trace tools')
+    sub_parsers = parser.add_subparsers(help='sub-commands')
+
+    enc_check_args(sub_parsers)
+    enc_from_gbk_args(sub_parsers)
+    clog_migrate_args(sub_parsers)
+    clog_parcheck_args(sub_parsers)
+    clog_partype_list_args(sub_parsers)
+    clog_use_db_args(sub_parsers)
+    clog_unuse_db_args(sub_parsers)
+    id_list_args(sub_parsers)
+    id_fix_args(sub_parsers)
+    id_submit_args(sub_parsers)
+    id_fix_tstr_args(sub_parsers)
+    id_submit_tstr_args(sub_parsers)
+    id_dump_server_args(sub_parsers)
+    id_dump_temp_args(sub_parsers)
+    id_dump_args(sub_parsers)
+
+    args = parser.parse_args(argv)
+    if args.__contains__('func'):
+        return args.func(args)
+
+    parser.parse_args(['-h'])
+    return 0
+
+
+if __name__ == '__main__':
+    sys.exit(main(sys.argv[1:]))

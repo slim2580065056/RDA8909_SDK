@@ -1,0 +1,58 @@
+#!/usr/bin/env python
+
+from __future__ import print_function
+import os, sys, platform
+import optparse
+import subprocess
+
+def nanopb_executable():
+    system = platform.system()
+    preferred = None
+    test = None
+    if system == "Linux":
+        preferred = "/opt/nanopb-0.3.9/protoc"
+        test = lambda x: subprocess.call("which %s > /dev/null" % x, shell=True) == 0
+    elif system == "Windows":
+        preferred = os.path.abspath("%s/nanopb-0.3.9/protoc.exe" % os.environ['CSDTK4INSTALLDIR'])
+        test = lambda x: subprocess.call("where %s > NUL 2>&1" % x, shell=True) == 0
+    else:
+        return None
+    if (os.access(preferred, os.X_OK)):
+        return preferred
+    else:
+        nprotoc = "nanopb-protoc"
+        return nprotoc if test(nprotoc) else None
+
+def main(args):
+    np = nanopb_executable()
+    if np is None:
+        print("nanopb-protoc: not found")
+        return -1
+
+    opt = optparse.OptionParser(usage="""%prog [options]""")
+    opt.add_option("-p", "--proto", action="store", dest="proto",
+                   help="proto file")
+    opt.add_option("-o", "--outdir", action="store", dest="out",
+                   help="output file into the directory")
+    opt, args = opt.parse_args(args)
+
+    proto = ""
+    out = ""
+    if opt.proto is None:
+        print("Input a proto file: -p xxx.proto")
+        return -2
+    else:
+        proto = os.path.abspath(opt.proto)
+    proto_path = os.path.dirname(proto)
+
+    if opt.out is None:
+        out = proto_path
+    else:
+        out = os.path.abspath(opt.out)
+
+    cmd = "%s --proto_path=%s --nanopb_out=%s %s" % (np, proto_path, out, proto)
+    print(cmd)
+    return subprocess.call(cmd, shell=True)
+
+if __name__ == '__main__':
+    sys.exit(main(sys.argv[1:]))
